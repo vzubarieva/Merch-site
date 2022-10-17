@@ -1,18 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function Item() {
-  const item = "Cup with logo";
-  const item2 = "Shirt with logo";
+function Item(props) {
+  // const item = "Cup with logo";
+  // const item2 = "Shirt with logo";
   return (
     <React.Fragment>
-      <h3>{item}</h3>
-      <h3>{item2}</h3>
-      <p>
-        <em>Firebase entries not saving!</em>
-      </p>
+      <h3>
+        {props.name}- {props.description}-{props.quantity}
+      </h3>
       <hr />
     </React.Fragment>
   );
 }
+
+Item.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+};
 
 export default Item;
