@@ -9,6 +9,7 @@ function NewItemForm(props) {
       name: event.target.name.value,
       description: event.target.description.value,
       quantity: parseInt(event.target.quantity.value),
+      price: parseInt(event.target.price.value),
       id: v4(),
     });
   }
@@ -19,6 +20,7 @@ function NewItemForm(props) {
         <input type="text" name="names" placeholder="Names" />
         <input type="text" name="description" placeholder="Description" />
         <input type="number" name="quantity" placeholder="Quantity" />
+        <input type="number" name="price" placeholder="Price $" />
         <button type="submit">Submit</button>
       </form>
     </React.Fragment>

@@ -7,7 +7,26 @@ class ItemControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainListOfItems: [],
+      mainListOfItems: [
+        {
+          name: "Cup",
+          description: "Cup with logo",
+          quantity: 150,
+          price: 15,
+        },
+        {
+          name: "T-shirt",
+          description: "T-shirt with logo",
+          quantity: 50,
+          price: 35,
+        },
+        {
+          name: "Jacket",
+          description: "Jacket with logo",
+          quantity: 25,
+          price: 50,
+        },
+      ],
     };
     //his.handleClick = this.handleClick.bind(this);
   }

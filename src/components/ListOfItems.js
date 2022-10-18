@@ -15,6 +15,7 @@ function ListOfItem(props) {
             name={item.name}
             description={item.description}
             quantity={item.quantity}
+            price={item.price}
             key={index}
           />
         )
