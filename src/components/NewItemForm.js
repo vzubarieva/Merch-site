@@ -1,6 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { v4 } from "uuid";
 
 function NewItemForm(props) {
+  function handleNewItemFormSubmission(event) {
+    event.preventDefault();
+    props.onNewTicketCreation({
+      name: event.target.name.value,
+      description: event.target.description.value,
+      quantity: parseInt(event.target.quantity.value),
+      id: v4(),
+    });
+  }
+
   return (
     <React.Fragment>
       <form onSubmit={handleNewItemFormSubmission}>
@@ -11,12 +23,9 @@ function NewItemForm(props) {
       </form>
     </React.Fragment>
   );
-  function handleNewItemFormSubmission(event) {
-    event.preventDefault();
-    console.log(event.target.names.value);
-    console.log(event.target.description.value);
-    console.log(event.target.quantity.value);
-  }
 }
 
+NewItemForm.propTypes = {
+  onNewTicketCreation: PropTypes.func,
+};
 export default NewItemForm;

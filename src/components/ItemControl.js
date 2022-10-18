@@ -7,10 +7,17 @@ class ItemControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      mainListOfItems: [],
     };
     //his.handleClick = this.handleClick.bind(this);
   }
-
+  handleAddingNewItemToList = (newItem) => {
+    const newMainListOfItems = this.state.mainListOfItems.concat(newItem);
+    this.setState({
+      mainListOfItems: newMainListOfItems,
+      formVisibleOnPage: false,
+    });
+  };
   handleClick = () => {
     this.setState((prevState) => ({
       formVisibleOnPage: !prevState.formVisibleOnPage,
@@ -21,11 +28,15 @@ class ItemControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewItemForm />;
+      currentlyVisibleState = (
+        <NewItemForm onNewTicketCreation={this.handleAddingNewItemToList} />
+      );
       buttonText = " Return to List of Items";
     } else {
-      currentlyVisibleState = <ListOfItems />;
-      buttonText = "Add Item;";
+      currentlyVisibleState = (
+        <ListOfItems listOfItems={this.state.mainListOfItems} />
+      );
+      buttonText = "Add Item";
     }
     return (
       <React.Fragment>
